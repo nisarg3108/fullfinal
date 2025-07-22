@@ -70,7 +70,7 @@ const Footer = () => {
                 <a href="/facilities#conference-hall" className="text-ivory/80 hover:text-gold transition-colors duration-200">Conference Room</a>
               </li>
               <li>
-                <span className="text-ivory/80 cursor-not-allowed opacity-60">Cafe <span className="text-xs text-gold">(Upcoming)</span></span>
+                <span className="text-ivory/80 cursor-not-allowed opacity-60">Cafe Vintage Bite <span className="text-xs text-gold">(Upcoming)</span></span>
               </li>
               <li>
                 <a href="/facilities#fitness-studio" className="text-ivory/80 hover:text-gold transition-colors duration-200">Gym</a>

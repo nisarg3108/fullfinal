@@ -31,7 +31,7 @@ const Facilities = () => {
       title: 'Palatio Banquet',
       icon: Users,
       description: 'Elegant outdoor venue perfect for weddings, corporate events, and celebrations. Set against the backdrop of lush greenery and mountain vistas.',
-      image: '/images/banquet-lawn-1.jpg',
+      image: '/images/pool/AB004827.JPG',
       features: ['Capacity 250 guests', 'Professional lighting', 'Catering services', 'Event planning']
     },
     {
@@ -84,9 +84,9 @@ const Facilities = () => {
     },
     {
       id: 9,
-      title: 'Cafe (Coming Soon)',
+      title: 'Cafe Vintage Bite (Coming Soon)',
       icon: Utensils,
-      description: 'Our cafe is coming soon! Enjoy fresh brews, snacks, and a cozy ambiance in the near future.',
+      description: 'Our cafe, Cafe Vintage Bite, is coming soon! Enjoy fresh brews, snacks, and a cozy ambiance in the near future.',
       image: '/images/room/AB004878.JPG',
       features: ['Artisan coffee', 'Fresh snacks', 'Cozy seating']
     },

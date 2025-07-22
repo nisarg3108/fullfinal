@@ -44,8 +44,8 @@ const Index = () => {
     },
     {
       icon: Crown,
-      title: 'Cafe (Upcoming)',
-      description: 'A cozy cafe experience is coming soon to Vintage Valley.',
+      title: 'Cafe Vintage Bite (Upcoming)',
+      description: 'A cozy cafe experience is coming soon to Vintage Valley at Cafe Vintage Bite.',
       color: 'from-yellow-400 to-orange-400'
     },
     { 
@@ -164,85 +164,91 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {rooms.filter(room => room.title !== 'Lotus Family Suite').map((room, index) => {
-              const isExpanded = expandedRoomIndex === index;
-              const previewLength = 120;
-              const shouldTruncate = room.description.length > previewLength;
-              const displayDescription = isExpanded || !shouldTruncate
-                ? room.description
-                : room.description.slice(0, previewLength) + '...';
-              return (
-                <div key={index} className="group cursor-pointer">
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                    <div className="relative overflow-hidden">
-                      <img
-                        src={room.images[0]}
-                        alt={room.title}
-                        className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" />
-                      <div className="absolute top-4 left-4">
-                        <span className="bg-gold text-charcoal px-3 py-1 rounded-full text-sm font-semibold">
-                          {room.title === 'Deluxe Studio Suite' ? 'Popular' :
-                           room.title === 'Lotus Family Suite' ? 'Family Choice' :
-                           room.title === 'Presidential Suite' ? 'Luxury' :
-                           room.title === 'Deluxe Edge View' ? 'Edge View' : ''}
-                        </span>
-                      </div>
-                      <div className="absolute bottom-4 left-4 text-white">
-                        <div className="text-2xl font-bold">From {room.pricing.weekday}</div>
-                        <div className="text-sm opacity-90">per night</div>
-                      </div>
-                    </div>
-                    
-                    <div className="p-8">
-                      <h3 className="font-playfair text-2xl font-bold text-charcoal mb-4">
-                        {room.title}
-                      </h3>
-                      <p className="text-charcoal/70 mb-6 leading-relaxed">
-                        {displayDescription}
-                        {shouldTruncate && (
-                          <button
-                            className="ml-2 text-gold underline text-sm focus:outline-none"
-                            onClick={e => {
-                              e.stopPropagation();
-                              setExpandedRoomIndex(isExpanded ? null : index);
-                            }}
-                          >
-                            {isExpanded ? 'Show Less' : 'Read More'}
-                          </button>
-                        )}
-                      </p>
-                      
-                      <div className="grid grid-cols-2 gap-3 mb-6">
-                        <div className="flex items-center text-sm text-charcoal/70">
-                          <div className="w-2 h-2 bg-gold rounded-full mr-2"></div>
-                          {room.bedType}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {(() => {
+              // Get all rooms, including Lotus Family Suite
+              const suiteRooms = rooms.filter(room => [
+                'Deluxe Studio Suite',
+                'Deluxe Edge View',
+                'Lotus Family Suite',
+                'Presidential Suite'
+              ].includes(room.title));
+              return suiteRooms.map((room, index) => {
+                const isExpanded = expandedRoomIndex === index;
+                const previewLength = 120;
+                const shouldTruncate = room.description.length > previewLength;
+                const displayDescription = isExpanded || !shouldTruncate
+                  ? room.description
+                  : room.description.slice(0, previewLength) + '...';
+                return (
+                  <div key={index} className="group cursor-pointer">
+                    <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={room.images[0]}
+                          alt={room.title}
+                          className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" />
+                        <div className="absolute top-4 left-4">
+                          <span className="bg-gold text-charcoal px-3 py-1 rounded-full text-sm font-semibold">
+                            {room.title === 'Deluxe Studio Suite' ? 'Popular' :
+                             room.title === 'Lotus Family Suite' ? 'Family Choice' :
+                             room.title === 'Presidential Suite' ? 'Luxury' :
+                             room.title === 'Deluxe Edge View' ? 'Edge View' : ''}
+                          </span>
                         </div>
-                        <div className="flex items-center text-sm text-charcoal/70">
-                          <div className="w-2 h-2 bg-gold rounded-full mr-2"></div>
-                          {room.size}
+                        <div className="absolute bottom-4 left-4 text-white">
+                          <div className="text-2xl font-bold">From {room.pricing.weekday}</div>
+                          <div className="text-sm opacity-90">per night</div>
                         </div>
-                        {room.amenities.slice(0,2).map((amenity, idx) => (
-                          <div key={idx} className="flex items-center text-sm text-charcoal/70">
+                      </div>
+                      <div className="p-8">
+                        <h3 className="font-playfair text-2xl font-bold text-charcoal mb-4">
+                          {room.title}
+                        </h3>
+                        <p className="text-charcoal/70 mb-6 leading-relaxed">
+                          {displayDescription}
+                          {shouldTruncate && (
+                            <button
+                              className="ml-2 text-gold underline text-sm focus:outline-none"
+                              onClick={e => {
+                                e.stopPropagation();
+                                setExpandedRoomIndex(isExpanded ? null : index);
+                              }}
+                            >
+                              {isExpanded ? 'Show Less' : 'Read More'}
+                            </button>
+                          )}
+                        </p>
+                        <div className="grid grid-cols-2 gap-3 mb-6">
+                          <div className="flex items-center text-sm text-charcoal/70">
                             <div className="w-2 h-2 bg-gold rounded-full mr-2"></div>
-                            {amenity.name}
+                            {room.bedType}
                           </div>
-                        ))}
+                          <div className="flex items-center text-sm text-charcoal/70">
+                            <div className="w-2 h-2 bg-gold rounded-full mr-2"></div>
+                            {room.size}
+                          </div>
+                          {room.amenities.slice(0,2).map((amenity, idx) => (
+                            <div key={idx} className="flex items-center text-sm text-charcoal/70">
+                              <div className="w-2 h-2 bg-gold rounded-full mr-2"></div>
+                              {amenity.name}
+                            </div>
+                          ))}
+                        </div>
+                        <button 
+                          onClick={() => handleRoomClick(room.title)}
+                          className="w-full bg-gradient-to-r from-gold to-bronze text-charcoal font-semibold py-3 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                        >
+                          View Details & Book
+                        </button>
                       </div>
-                      
-                      <button 
-                        onClick={() => handleRoomClick(room.title)}
-                        className="w-full bg-gradient-to-r from-gold to-bronze text-charcoal font-semibold py-3 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                      >
-                        View Details & Book
-                      </button>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              });
+            })()}
           </div>
         </div>
       </section>

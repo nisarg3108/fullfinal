@@ -98,7 +98,7 @@ const Contact = () => {
                     <p><strong>From Mumbai:</strong> Take NH-3 towards Nashik, exit at Igatpuri (120 km, 2.5 hours)</p>
                     <p><strong>From Pune:</strong> Via NH-50 to Nashik, then to Igatpuri (180 km, 3 hours)</p>
                     <p><strong>From Nashik:</strong> Take Igatpuri Road via Trimbakeshwar (65 km, 1.5 hours)</p>
-                    <p><strong>From Samrudhi:</strong> Take the Samruddhi Mahamarg, exit at Ghoti, and follow signs to Igatpuri and Vintage Valley Spa Resort.</p>
+                    <p><strong>From Samrudhi:</strong> Take the Samruddhi Mahamarg and exist towards Igatpuri,and follow signs to vintage valley spa resort.</p>
                     <p><strong>Nearest Railway:</strong> Igatpuri Station (8 km, 13 Minutes)</p>
                   </div>
                 </div>

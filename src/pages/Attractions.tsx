@@ -14,6 +14,14 @@ const Attractions = () => {
 
   const igatpuriPlaces = [
     {
+      name: 'Kalsubai Peak',
+      distance: '40 km',
+      time: '1 hour',
+      description: 'The highest peak in Maharashtra, popular for trekking and breathtaking panoramic views.',
+      image: '/images/at/153.jpeg',
+      highlights: ['Highest peak', 'Trekking', 'Panoramic views', 'Adventure']
+    },
+    {
       name: 'Dhamma Giri / Vipassana Meditation Center',
       distance: '10 km',
       time: '18 mins',
@@ -108,14 +116,6 @@ const Attractions = () => {
       description: 'Temple dedicated to Jatayu from the Ramayana, offering spiritual ambiance and scenic views.',
       image: '/images/at/152.jpeg',
       highlights: ['Jatayu temple', 'Spiritual site', 'Scenic views', 'Ramayana connection']
-    },
-    {
-      name: 'Kalsubai Peak',
-      distance: '40 km',
-      time: '1 hour',
-      description: 'The highest peak in Maharashtra, popular for trekking and breathtaking panoramic views.',
-      image: '/images/at/153.jpeg',
-      highlights: ['Highest peak', 'Trekking', 'Panoramic views', 'Adventure']
     }
   ];
 
@@ -195,7 +195,7 @@ const Attractions = () => {
       highlights: ['Ramayana site', 'Sita Gufa', 'Ram Kund', 'Sacred place', 'Historical significance', 'Religious importance']
     },
     {
-      name: 'Anjeneri',
+      name: 'Anjaneri',
       distance: '58 km',
       time: '1.4 hours',
       description: 'Birthplace of Lord Hanuman, offering trekking opportunities and religious significance.',
@@ -249,6 +249,14 @@ const Attractions = () => {
       description: 'White marble temple complex with replicas of all major pilgrimage sites of India.',
       image: '/images/at/30.jpg',
       highlights: ['Marble temple', 'Pilgrimage replicas', 'Beautiful complex', 'Religious significance']
+    },
+    {
+      name: 'Saptashrungi Devi Temple',
+      distance: '70 km',
+      time: '2 hours',
+      description: 'A revered Hindu temple dedicated to Goddess Saptashrungi, located on a hilltop and known for its scenic views and spiritual significance.',
+      images: ['\\images\\at\\333.jpeg'],
+      highlights: ['Hindu temple', 'Hilltop views', 'Spiritual significance', 'Scenic location']
     }
   ];
 
