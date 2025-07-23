@@ -5,6 +5,60 @@ import { useNavigate } from 'react-router-dom';
 import { Sparkles, Waves, TreePine, Crown, Star, MapPin, Phone, Mail, Calendar, Users, Award, Gamepad2 } from 'lucide-react';
 import { rooms, Room } from '../roomsData';
 import React, { useState } from 'react';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+
+// GallerySlider component for auto-advancing image slider
+function GallerySlider({ images, interval = 1500 }: { images: { src: string; alt: string }[]; interval?: number }) {
+  const [current, setCurrent] = React.useState(0);
+  const imagesPerSlide = 2;
+  const totalSlides = Math.ceil(images.length / imagesPerSlide);
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % totalSlides);
+    }, interval);
+    return () => clearInterval(timer);
+  }, [totalSlides, interval]);
+  const getSlideImages = (slideIdx: number) =>
+    images.slice(slideIdx * imagesPerSlide, slideIdx * imagesPerSlide + imagesPerSlide);
+  return (
+    <div className="relative w-full h-80 flex items-center justify-center overflow-hidden rounded-3xl border-4 border-gold/30 shadow-2xl bg-black/80">
+      {Array.from({ length: totalSlides }).map((_, slideIdx) => (
+        <div
+          key={slideIdx}
+          className={`absolute top-0 left-0 w-full h-full flex transition-all duration-700 ease-in-out ${slideIdx === current ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+        >
+          {getSlideImages(slideIdx).map((img, idx) => (
+            <div key={img.src} className="w-1/2 h-full flex items-center justify-center p-2">
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-72 object-cover rounded-2xl shadow-lg border-2 border-gold/40 transition-transform duration-700"
+                style={{ background: '#222' }}
+              />
+              {/* Caption overlay for each image */}
+              <div className="absolute bottom-8 left-0 w-1/2 px-4" style={{ left: `${idx * 50}%` }}>
+                <span className="block text-base md:text-lg text-white font-semibold drop-shadow-lg w-full truncate text-center bg-black/40 rounded-md py-1">
+                  {img.alt}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      ))}
+      {/* Navigation dots */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+        {Array.from({ length: totalSlides }).map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrent(idx)}
+            className={`block w-4 h-4 rounded-full border-2 border-gold transition-all duration-300 ${idx === current ? 'bg-gold scale-125 shadow-lg' : 'bg-ivory/60 hover:bg-gold/60'}`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const Index = () => {
   const navigate = useNavigate();
@@ -97,6 +151,26 @@ const Index = () => {
     }
   ];
 
+  // Gallery images (copied from Gallery.tsx)
+  const galleryImages = [
+    { src: '/images/deluxe-studio-suite-1.jpg', alt: 'Deluxe Studio Suite 1' },
+    { src: '/images/deluxe-studio-suite-2.jpg', alt: 'Deluxe Studio Suite 2' },
+    { src: '/images/deluxe-studio-suite-3.jpg', alt: 'Deluxe Studio Suite 3' },
+    { src: '/images/skyline-deluxe-1.jpg', alt: 'Skyline Deluxe 1' },
+    { src: '/images/skyline-deluxe-2.jpg', alt: 'Skyline Deluxe 2' },
+    { src: '/images/skyline-deluxe-3.jpg', alt: 'Skyline Deluxe 3' },
+    { src: '/images/deluxe-edge-view-1.jpg', alt: 'Deluxe Edge View 1' },
+    { src: '/images/deluxe-edge-view-2.jpg', alt: 'Deluxe Edge View 2' },
+    { src: '/images/deluxe-edge-view-3.jpg', alt: 'Deluxe Edge View 3' },
+    { src: '/images/1.jpeg', alt: 'Lotus Family Suite 1' },
+    { src: '/images/2.jpeg', alt: 'Lotus Family Suite 2' },
+    { src: '/images/3.jpeg', alt: 'Lotus Family Suite 3' },
+    { src: '/images/presidential-sky-villa-1.jpg', alt: 'Presidential Sky Villa 1' },
+    { src: '/images/presidential-sky-villa-2.jpg', alt: 'Presidential Sky Villa 2' },
+    { src: '/images/presidential-sky-villa-3.jpg', alt: 'Presidential Sky Villa 3' },
+    // ... (add more as needed from Gallery.tsx)
+  ];
+
   return (
     <div className="min-h-screen bg-ivory">
       <Navbar />
@@ -146,6 +220,14 @@ const Index = () => {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Gallery Slider Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-playfair text-4xl font-bold text-center mb-8 text-charcoal">Gallery</h2>
+          <GallerySlider images={galleryImages} interval={1500} />
         </div>
       </section>
 

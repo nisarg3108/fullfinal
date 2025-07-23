@@ -108,72 +108,72 @@ const Facilities = () => {
       <FloatingContact />
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-charcoal to-charcoal/90">
+      <section className="pt-24 pb-10 sm:pb-16 bg-gradient-to-br from-charcoal to-charcoal/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-playfair text-5xl md:text-6xl font-bold text-ivory mb-6">
+          <h1 className="font-playfair text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-ivory mb-4 sm:mb-6">
             World-Class Facilities
           </h1>
-          <p className="text-xl text-ivory/80 max-w-3xl mx-auto">
+          <p className="text-base xs:text-lg sm:text-xl text-ivory/80 max-w-3xl mx-auto">
             Discover premium amenities and exceptional services designed to enhance every moment of your stay at Vintage Valley Resort
           </p>
         </div>
       </section>
 
       {/* Facilities Grid */}
-      <section className="section-padding">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section className="py-8 sm:py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4">
+          <div className="grid grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
             {facilities.map((facility, index) => {
               const isComingSoon = facility.id === 4 || facility.id === 9;
               return (
                 <div
                   key={facility.id}
                   id={facility.title.toLowerCase().replace(/\s|&/g, '-').replace(/-{2,}/g, '-')}
-                  className={`group ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}
+                  className={`group flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}
                    ${isComingSoon ? 'bg-gray-100 text-gray-400 cursor-not-allowed opacity-70' : 'bg-white cursor-pointer hover:shadow-2xl'}
-                   rounded-3xl overflow-hidden luxury-shadow transition-all duration-500`}
+                   rounded-2xl sm:rounded-3xl overflow-hidden luxury-shadow transition-all duration-500`}
                   onClick={isComingSoon ? undefined : () => handleFacilityClick(facility)}
                 >
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden flex-shrink-0">
                     <img
                       src={facility.image}
                       alt={facility.title}
-                      className={`w-full h-64 lg:h-80 object-cover transition-transform duration-700 ${isComingSoon ? 'grayscale brightness-110' : 'group-hover:scale-110'}`}
+                      className={`w-full h-40 xs:h-48 sm:h-64 lg:h-80 object-cover transition-transform duration-700 ${isComingSoon ? 'grayscale brightness-110' : 'group-hover:scale-110'}`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" />
                     {isComingSoon && (
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="bg-gold/90 text-charcoal px-8 py-4 rounded-2xl font-bold text-2xl shadow-2xl opacity-95">
+                        <div className="bg-gold/90 text-charcoal px-4 py-2 xs:px-8 xs:py-4 rounded-2xl font-bold text-lg xs:text-2xl shadow-2xl opacity-95">
                           Coming Soon
                         </div>
                       </div>
                     )}
-                    <div className="absolute top-6 left-6">
-                      <div className="bg-gold/90 backdrop-blur-sm rounded-full p-3">
-                        <facility.icon className="h-6 w-6 text-charcoal" />
+                    <div className="absolute top-3 left-3 xs:top-6 xs:left-6">
+                      <div className="bg-gold/90 backdrop-blur-sm rounded-full p-2 xs:p-3">
+                        <facility.icon className="h-5 w-5 xs:h-6 xs:w-6 text-charcoal" />
                       </div>
                     </div>
                   </div>
                   
-                  <div className="p-8">
-                    <h2 className="font-playfair text-3xl font-bold text-charcoal mb-4">
+                  <div className="p-4 xs:p-6 sm:p-8">
+                    <h2 className="font-playfair text-xl xs:text-2xl sm:text-3xl font-bold text-charcoal mb-2 xs:mb-4">
                       {facility.title}
                     </h2>
-                    <p className="text-charcoal/80 text-lg leading-relaxed mb-6">
+                    <p className="text-charcoal/80 text-base xs:text-lg leading-relaxed mb-4 xs:mb-6">
                       {facility.description}
                     </p>
                     
-                    <div className="space-y-2 mb-6">
+                    <div className="space-y-1 xs:space-y-2 mb-4 xs:mb-6">
                       {facility.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-center space-x-2">
                           <div className="w-2 h-2 bg-gold rounded-full" />
-                          <span className="text-charcoal/70">{feature}</span>
+                          <span className="text-charcoal/70 text-sm xs:text-base">{feature}</span>
                         </div>
                       ))}
                     </div>
                     
                     {!isComingSoon && (
-                      <button className="bg-gradient-to-r from-gold to-bronze text-charcoal px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                      <button className="bg-gradient-to-r from-gold to-bronze text-charcoal px-4 xs:px-6 py-2 xs:py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-sm xs:text-base">
                         Learn More
                       </button>
                     )}
