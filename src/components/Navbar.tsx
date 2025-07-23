@@ -41,18 +41,18 @@ const Navbar = () => {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+        <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className={`font-playfair text-2xl font-bold ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+            <div className={`font-playfair text-lg sm:text-2xl font-bold ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
               Vintage Valley
             </div>
-            <div className={`font-vibes text-lg ${isScrolled ? 'text-gold' : 'text-white'}`}>Resort</div>
+            <div className={`font-vibes text-base sm:text-lg ${isScrolled ? 'text-gold' : 'text-white'}`}>Resort</div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4 sm:space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -68,7 +68,7 @@ const Navbar = () => {
             ))}
             <button 
               onClick={handleBookNow}
-              className={`px-6 py-2 rounded-full font-medium hover:bg-bronze transition-colors duration-200 ${isScrolled ? 'bg-gold text-gray-800' : 'bg-gold text-gray-800'}`}
+              className={`px-4 sm:px-6 py-2 rounded-full font-medium text-sm sm:text-base hover:bg-bronze transition-colors duration-200 ${isScrolled ? 'bg-gold text-gray-800' : 'bg-gold text-gray-800'}`}
             >
               Book Now
             </button>
@@ -95,7 +95,7 @@ const Navbar = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                  className={`block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
                     location.pathname === link.path
                       ? 'text-gold bg-gold/10'
                       : 'text-gray-800 hover:text-gold hover:bg-gold/5'
@@ -107,7 +107,7 @@ const Navbar = () => {
               ))}
               <button 
                 onClick={handleBookNow}
-                className="w-full mt-4 px-6 py-2 rounded-full font-medium bg-gold text-gray-800 hover:bg-bronze transition-colors duration-200"
+                className="w-full mt-4 px-4 py-3 rounded-full font-medium text-base bg-gold text-gray-800 hover:bg-bronze transition-colors duration-200"
               >
                 Book Now
               </button>
